@@ -29,4 +29,28 @@ public class TaskData {
         }
         return returnTasks;
     }
+
+    public Set<Task> getAnnsTasks() {
+        return annsTasks;
+    }
+
+    public void setAnnsTasks(Set<Task> annsTasks) {
+        this.annsTasks = annsTasks;
+    }
+
+    public Set<Task> getBobsTasks() {
+        return bobsTasks;
+    }
+
+    public void setBobsTasks(Set<Task> bobsTasks) {
+        this.bobsTasks = bobsTasks;
+    }
+
+    public Set<Task> getCarolsTasks() {
+        return carolsTasks;
+    }
+
+    public void setCarolsTasks(Set<Task> carolsTasks) {
+        this.carolsTasks = carolsTasks;
+    }
 }
