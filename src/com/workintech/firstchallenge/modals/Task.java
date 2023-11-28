@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Task {
     private String project;
     private String description;
-    private String asignee;
+    private String assignee;
     private Priority priority;
     private Status status;
 
@@ -17,12 +17,23 @@ public class Task {
         this.description = description;
     }
 
-    public Task(String project, String description, String asignee, Priority priority, Status status) {
+    public Task(String project, String description, String assignee, Priority priority, Status status) {
         this.project = project;
         this.description = description;
-        this.asignee = asignee;
+        this.assignee = assignee;
         this.priority = priority;
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "project='" + project + '\'' +
+                ", description='" + description + '\'' +
+                ", asignee='" + assignee + '\'' +
+                ", priority=" + priority +
+                ", status=" + status +
+                '}';
     }
 
     @Override

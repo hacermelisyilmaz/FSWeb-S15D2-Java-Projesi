@@ -4,15 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TaskData {
-    private Set<Task> annsTasks;
-    private Set<Task> bobsTasks;
-    private Set<Task> carolsTasks;
+    private Set<Task> annsTasks = new HashSet<>();
+    private Set<Task> bobsTasks = new HashSet<>();
+    private Set<Task> carolsTasks = new HashSet<>();
 
     public Set<Task> getTasks(String assignee) {
-        Set<Task> returnTasks = null;
+        Set<Task> returnTasks = new HashSet<>();
         switch (assignee) {
             case "ann": {
-                returnTasks = annsTasks;
+                returnTasks.addAll(annsTasks);
             }
             case "bob": {
                 returnTasks = bobsTasks;
@@ -21,12 +21,18 @@ public class TaskData {
                 returnTasks = carolsTasks;
             }
             case "all": {
-                returnTasks.addAll(annsTasks);
-                returnTasks.addAll(bobsTasks);
+                returnTasks.addAll(getUnion(annsTasks, bobsTasks));
                 returnTasks.addAll(carolsTasks);
             }
             default: System.out.println("Please select a viable assignee.");
         }
+        return returnTasks;
+    }
+
+    public Set<Task> getUnion(Set<Task> list1, Set<Task> list2) {
+        Set<Task> returnTasks = new HashSet<>();
+        returnTasks.addAll(list1);
+        returnTasks.addAll(list2);
         return returnTasks;
     }
 
