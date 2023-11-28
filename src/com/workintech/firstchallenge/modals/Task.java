@@ -9,8 +9,8 @@ public class Task {
     private String project;
     private String description;
     private String asignee;
-    Priority priority;
-    Status status;
+    private Priority priority;
+    private Status status;
 
     @Override
     public boolean equals(Object o) {
