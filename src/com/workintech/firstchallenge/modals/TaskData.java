@@ -53,4 +53,13 @@ public class TaskData {
     public void setCarolsTasks(Set<Task> carolsTasks) {
         this.carolsTasks = carolsTasks;
     }
+
+    @Override
+    public String toString() {
+        return "TaskData{" +
+                "annsTasks=" + annsTasks +
+                ", bobsTasks=" + bobsTasks +
+                ", carolsTasks=" + carolsTasks +
+                '}';
+    }
 }
