@@ -1,6 +1,7 @@
 package com.workintech.firstchallenge.modals;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TaskData {
@@ -8,56 +9,38 @@ public class TaskData {
     private Set<Task> bobsTasks = new HashSet<>();
     private Set<Task> carolsTasks = new HashSet<>();
 
+    public TaskData(Set<Task> annsTasks, Set<Task> bobsTasks, Set<Task> carolsTasks) {
+        this.annsTasks = annsTasks;
+        this.bobsTasks = bobsTasks;
+        this.carolsTasks = carolsTasks;
+    }
+
     public Set<Task> getTasks(String assignee) {
+        if (assignee.equalsIgnoreCase("ann")) return this.annsTasks;
+        else if (assignee.equalsIgnoreCase("bob")) return this.bobsTasks;
+        else if (assignee.equalsIgnoreCase("carol")) return this.carolsTasks;
+        else if (assignee.equalsIgnoreCase("all")) return getUnion(annsTasks, bobsTasks, carolsTasks);
+        return new HashSet<>();
+    }
+
+    public Set<Task> getUnion(Set<Task>... sets) {
         Set<Task> returnTasks = new HashSet<>();
-        switch (assignee) {
-            case "ann": {
-                returnTasks.addAll(annsTasks);
-            }
-            case "bob": {
-                returnTasks = bobsTasks;
-            }
-            case "carol": {
-                returnTasks = carolsTasks;
-            }
-            case "all": {
-                returnTasks.addAll(getUnion(annsTasks, bobsTasks));
-                returnTasks.addAll(carolsTasks);
-            }
-            default: System.out.println("Please select a viable assignee.");
+        for(Set<Task> taskSet: sets) {
+            returnTasks.addAll(taskSet);
         }
         return returnTasks;
     }
 
-    public Set<Task> getUnion(Set<Task> list1, Set<Task> list2) {
-        Set<Task> returnTasks = new HashSet<>();
-        returnTasks.addAll(list1);
-        returnTasks.addAll(list2);
-        return returnTasks;
+    public Set<Task> getIntersect(Set<Task> list1, Set<Task> list2) {
+        Set<Task> intersections = new HashSet<>(list1);
+        intersections.retainAll(list2);
+        return intersections;
     }
 
-    public Set<Task> getAnnsTasks() {
-        return annsTasks;
-    }
-
-    public void setAnnsTasks(Set<Task> annsTasks) {
-        this.annsTasks = annsTasks;
-    }
-
-    public Set<Task> getBobsTasks() {
-        return bobsTasks;
-    }
-
-    public void setBobsTasks(Set<Task> bobsTasks) {
-        this.bobsTasks = bobsTasks;
-    }
-
-    public Set<Task> getCarolsTasks() {
-        return carolsTasks;
-    }
-
-    public void setCarolsTasks(Set<Task> carolsTasks) {
-        this.carolsTasks = carolsTasks;
+    public Set<Task> getDifference(Set<Task> list1, Set<Task> list2) {
+        Set<Task> difference = new HashSet<>(list1);
+        difference.removeAll(list2);
+        return difference;
     }
 
     @Override
