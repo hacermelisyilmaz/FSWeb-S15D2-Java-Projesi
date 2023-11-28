@@ -12,6 +12,19 @@ public class Task {
     private Priority priority;
     private Status status;
 
+    public Task(String project, String description) {
+        this.project = project;
+        this.description = description;
+    }
+
+    public Task(String project, String description, String asignee, Priority priority, Status status) {
+        this.project = project;
+        this.description = description;
+        this.asignee = asignee;
+        this.priority = priority;
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
