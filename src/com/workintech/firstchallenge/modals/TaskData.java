@@ -5,9 +5,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TaskData {
-    private Set<Task> annsTasks = new HashSet<>();
-    private Set<Task> bobsTasks = new HashSet<>();
-    private Set<Task> carolsTasks = new HashSet<>();
+    private Set<Task> annsTasks;
+    private Set<Task> bobsTasks;
+    private Set<Task> carolsTasks;
+    private Set<Task> unassignedTasks;
 
     public TaskData(Set<Task> annsTasks, Set<Task> bobsTasks, Set<Task> carolsTasks) {
         this.annsTasks = annsTasks;

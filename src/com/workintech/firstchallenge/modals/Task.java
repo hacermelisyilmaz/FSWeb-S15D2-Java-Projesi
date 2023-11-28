@@ -33,7 +33,7 @@ public class Task {
                 ", asignee='" + assignee + '\'' +
                 ", priority=" + priority +
                 ", status=" + status +
-                '}';
+                "}\n";
     }
 
     @Override
